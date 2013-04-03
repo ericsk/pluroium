@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2011 The Pluroium Development Team.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:installLocation="auto"
+    android:versionName="1.0" android:versionCode="1" package="org.pluroid.pluroium">
+      
+    <application android:icon="@drawable/pluroid" 
+        android:label="@string/app_name"
+        android:name=".PluroiumApplication">
+    
+        <activity android:name=".LaunchActivity"
+            android:theme="@style/PlurkStyle"
+            android:configChanges="keyboardHidden|orientation">
+            <intent-filter> 
+                <action android:name="android.intent.action.MAIN" /> 
+                <category android:name="android.intent.category.DEFAULT" /> 
+                <category android:name="android.intent.category.LAUNCHER" /> 
+            </intent-filter>
+        </activity>
+    
+        <activity android:name=".PlurkActivity" 
+            android:label="@string/app_name"
+            android:theme="@style/PlurkStyle"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="keyboardHidden|orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"></action>
+                <action android:name="android.intent.action.PICK"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+        
+        <activity android:name=".ComposeActivity" android:windowSoftInputMode="adjustResize"
+            android:configChanges="keyboardHidden|orientation"
+            android:theme="@style/PlurkStyle">
+            <intent-filter>
+               <action android:name="android.intent.action.SEND" />
+               <category android:name="android.intent.category.DEFAULT" />
+               <data android:mimeType="text/plain" />
+           </intent-filter>
+        </activity>
+        
+        <activity android:name=".SinglePlurkActivity" android:windowSoftInputMode="adjustResize"
+            android:configChanges="keyboardHidden|orientation"
+            android:theme="@style/PlurkStyle"></activity>
+            
+        <activity android:name=".SharePhotoActivity" android:windowSoftInputMode="adjustResize"
+            android:configChanges="keyboardHidden|orientation"
+            android:theme="@style/PlurkStyle"
+            android:launchMode="singleTask">
+            <intent-filter>
+               <action android:name="android.intent.action.SEND" />
+               <category android:name="android.intent.category.DEFAULT" />
+               <data android:mimeType="image/*" />
+           </intent-filter>
+        </activity>
+        
+        <activity android:name=".SettingsActivity" android:theme="@style/PlurkStyle" />
+        
+                    
+        <service android:process=":remote" android:name=".service.UploadService">
+            <intent-filter>
+                <action android:name="org.pluroid.pluroium.service.IUploadService" />
+                <action android:name="org.pluroid.pluroium.service.UPLOAD_SERVICE" />
+            </intent-filter>
+        </service>
+        
+    </application>
+
+    <uses-sdk android:minSdkVersion="7" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
+    <supports-screens 
+        android:largeScreens="true" 
+        android:normalScreens="true" 
+        android:smallScreens="true"
+        android:anyDensity="false" />
+</manifest> 

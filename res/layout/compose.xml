@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2011 The Pluroium Development Team.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+    <LinearLayout style="@style/TitleBar">
+
+        <TextView style="?android:attr/windowTitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#fff"
+            android:paddingLeft="5dip"
+            android:text="@string/compose_title" /> 
+        
+        <View style="@style/TitleBarSpring" />
+
+        <ProgressBar style="@style/TitleBarProgressIndicator"
+            android:id="@+id/title_refresh_progress"
+            android:visibility="gone" />
+
+        <ImageView style="@style/TitleBarSeparator" />
+
+        <ImageButton style="@style/TitleBarAction"
+            android:id="@+id/btn_title_emotion"
+            android:src="@drawable/ic_title_emotion"
+            android:onClick="onEmotionClick" />
+        
+        <!--
+        <ImageView style="@style/TitleBarSeparator" />
+
+        <ImageButton style="@style/TitleBarAction"
+            android:id="@+id/btn_title_hyperlink"
+            android:src="@drawable/ic_title_hyperlink"
+            android:onClick="onHyperlinkClick" />
+            
+        -->
+            
+        <ImageView style="@style/TitleBarSeparator" />
+
+        <ImageButton style="@style/TitleBarAction"
+            android:id="@+id/btn_title_camera"
+            android:src="@drawable/ic_title_camera"
+            android:onClick="onCameraClick" />
+
+        <ImageView style="@style/TitleBarSeparator" />
+
+        <ImageButton style="@style/TitleBarAction"
+            android:id="@+id/btn_title_map"
+            android:src="@drawable/ic_title_map"
+            android:onClick="onMapClick" />
+            
+    </LinearLayout>
+  
+    <View android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_below="@+id/divider"
+        android:background="@android:drawable/divider_horizontal_dark" />
+    
+    <RelativeLayout android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    
+        <!-- 底下的按鈕 -->
+        <LinearLayout android:id="@+id/compose_bottom_container"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dip"
+            android:paddingLeft="4dip"
+            android:paddingRight="4dip"
+            android:paddingBottom="1dip"
+            android:background="@android:drawable/bottom_bar"
+            android:layout_alignParentBottom="true">
+                
+            <Button android:id="@+id/compose_plurk_button"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/plurk" />
+                
+            <Button android:id="@+id/compose_cancel_button"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel" />
+        </LinearLayout>
+        
+        <LinearLayout android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:layout_alignParentTop="true"
+            android:layout_above="@id/compose_bottom_container"
+            android:padding="5dip">
+            
+            <Spinner android:id="@+id/compose_qualifier"
+               style="?android:attr/textAppearanceMedium"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:drawSelectorOnTop="true"
+               android:prompt="@string/plurk_qualifier_label"
+               android:entries="@array/qualifiers" />
+                 
+            <EditText android:id="@+id/compose_content"
+                android:layout_width="fill_parent"
+                android:layout_height="220dip"
+                android:hint="@string/plurk_text_hint"
+                android:gravity="top" />
+        </LinearLayout>
+    
+    </RelativeLayout>
+    
+</LinearLayout>
